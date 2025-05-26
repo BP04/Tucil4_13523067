@@ -1,4 +1,8 @@
 object Test {
+    def printMatrix(matrix: Array[Array[Int]]): Unit = {
+        matrix.foreach(row => println(row.mkString(", ")))
+    }
+
     def main(args: Array[String]): Unit = {
         val testCases = List(
             (
@@ -93,11 +97,13 @@ object Test {
         )
 
         for ((name, matrix) <- testCases) {
-            val (cost, path, time) = Main.solve(matrix)
             println(s"$name")
+            printMatrix(matrix)
+            val (cost, path, time) = Main.solve(matrix)
             println(s"Minimum Cost: $cost")
             println(s"Path: ${path.mkString(" -> ")}")
             println(f"Time taken: $time%.4f ms")
+            println("-" * 40)
         }
     }
 }
